@@ -3,6 +3,7 @@ import Image from "next/image";
 import Sidebar from "./SideBar";
 import { IoMenuOutline } from "react-icons/io5";
 import { useState } from "react";
+import { BsStars } from "react-icons/bs";
 
 export default function Navbar() {
   const links = [
@@ -68,7 +69,8 @@ export default function Navbar() {
         </ul>
 
         <div>
-          <button className="bg-white border-[1px] border-[#4a4c60] text-[#4a4c60] rounded-lg text-lg  px-8 py-2">
+          <button className="bg-white border-[1px] border-[#4a4c60] text-[#4a4c60] rounded-lg text-lg  px-5 py-2 flex items-center  justify-between space-x-10">
+            <BsStars color="#1e3b8a" size={24} />
             Get Started
           </button>
         </div>

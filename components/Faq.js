@@ -43,7 +43,7 @@ const Faq = () => {
                   {faq.question}
                 </h3>
                 <FaAngleDown
-                  className={`w-5 h-5 sm:w-6 sm:h-6 text-teal-800 transition-transform duration-300 flex-shrink-0 ${
+                  className={`w-5 cursor-pointer h-5 sm:w-6 sm:h-6 text-teal-800 transition-transform duration-300 flex-shrink-0 ${
                     openFAQ === index ? "rotate-180" : ""
                   }`}
                 />
