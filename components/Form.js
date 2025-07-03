@@ -97,7 +97,7 @@ const Form = () => {
             />
           </div>
 
-          <div className="my-4"> 
+          <div className="my-4">
             <label className="block text-sm font-medium text-gray-700 mb-2">
               Preferred Contact Time
             </label>
@@ -115,46 +115,6 @@ const Form = () => {
             </p>
           </div>
 
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Preferred Contact Method
-            </label>
-            <select
-              name="preferredMethod"
-              value={formData.preferredMethod}
-              onChange={handleInputChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent text-gray-700 bg-white"
-            >
-              <option value="">Select preferred method</option>
-              <option value="phone">Phone Call</option>
-              <option value="email">Email</option>
-              <option value="text">Text Message</option>
-              <option value="either">Either Phone or Email</option>
-            </select>
-          </div>
-
-          <div className="flex items-center space-x-3 py-2">
-            <input
-              type="checkbox"
-              name="robotCheck"
-              checked={formData.robotCheck}
-              onChange={handleInputChange}
-              className="w-4 h-4 text-teal-600 border-gray-300 rounded focus:ring-teal-500"
-            />
-            <div className="flex-1">
-              <label className="text-sm text-gray-700">I'm not a robot</label>
-              <div className="text-xs text-gray-500 mt-1"></div>
-            </div>
-            <div className="w-12 h-12 bg-gray-100  rounded flex items-center justify-center">
-              <img
-                src="https://www.gstatic.com/recaptcha/api2/logo_48.png"
-                width={50}
-                height={50}
-                alt="logo"
-              />
-            </div>
-          </div>
-
           <button
             onClick={handleSubmit}
             className="w-full bg-teal-700 text-white py-3 px-4 rounded-md font-medium hover:bg-teal-800 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2"
@@ -162,12 +122,18 @@ const Form = () => {
             Submit
           </button>
 
-          <div className="text-xs text-gray-500 text-center mt-4 leading-relaxed flex items-center space-x-5">
-            <input type="checkbox" />
-            <p>
-              By clicking submit you consent to receive texts and emails from
-              Dr. Marcia T. Norman
-            </p>
+          <div className="flex items-center space-x-5 ">
+            <input
+              type="checkbox"
+              name="robotCheck"
+              checked={formData.robotCheck}
+              onChange={handleInputChange}
+              className="w-4 h-4 text-teal-600 border-gray-300 rounded focus:ring-teal-500"
+            />
+            <label className="block text-sm font-medium text-gray-700 ">
+Let us know how you'd like to be contacted — if you're okay with us reaching out.
+
+            </label>
           </div>
         </div>
       </div>
