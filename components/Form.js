@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import React, { useState } from "react";
 
 const Form = () => {
@@ -14,6 +13,8 @@ const Form = () => {
     robotCheck: false,
   });
 
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData((prev) => ({
@@ -24,19 +25,24 @@ const Form = () => {
 
   const handleSubmit = () => {
     console.log("Form submitted:", formData);
+    setIsSubmitted(true);
+  };
+
+  const closePopup = () => {
+    setIsSubmitted(false);
   };
 
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4 py-8">
-      <div className="bg-white rounded-lg shadow-lg p-8 w-full max-w-xl mx-auto">
+      <div className="bg-white rounded-lg shadow-lg p-8 w-full max-w-xl mx-auto relative">
         <div className="text-center mb-6">
           <h2 className="text-2xl font-bold text-gray-800 mb-4">
             Get In Touch
           </h2>
           <p className="text-sm text-gray-600 leading-relaxed">
-            Simply fill out the brief fields below and Dr. Norman will be in
-            touch with you soon, usually within one business day. This form is
-            safe, private, and completely free.
+            Simply fill out the brief fields below and Dr. Serena Blake will be
+            in touch with you soon, usually within one business day. This form
+            is safe, private, and completely free.
           </p>
         </div>
 
@@ -115,14 +121,7 @@ const Form = () => {
             </p>
           </div>
 
-          <button
-            onClick={handleSubmit}
-            className="w-full bg-teal-700 text-white py-3 px-4 rounded-md font-medium hover:bg-teal-800 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2"
-          >
-            Submit
-          </button>
-
-          <div className="flex items-center space-x-5 ">
+          <div className="flex items-center space-x-5">
             <input
               type="checkbox"
               name="robotCheck"
@@ -130,17 +129,42 @@ const Form = () => {
               onChange={handleInputChange}
               className="w-4 h-4 text-teal-600 border-gray-300 rounded focus:ring-teal-500"
             />
-            <label className="block text-sm font-medium text-gray-700 ">
-Let us know how you'd like to be contacted — if you're okay with us reaching out.
-
+            <label className="block text-sm font-medium text-gray-700">
+              Let us know how you'd like to be contacted — if you're okay with
+              us reaching out.
             </label>
           </div>
+
+          <button
+            onClick={handleSubmit}
+            className="w-full bg-teal-700 text-white py-3 px-4 rounded-md font-medium hover:bg-teal-800 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2"
+          >
+            Submit
+          </button>
         </div>
+
+        {isSubmitted && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center h-full  bg-opacity-60 backdrop-blur-md">
+            <div className="bg-white rounded-lg shadow-lg px-6 py-10 max-w-xl w-full text-center space-y-3">
+              <h3 className="text-lg md:text-xl lg:text-2xl font-bold text-gray-800 mb-2">
+                Thank You!
+              </h3>
+              <p className="text-sm text-gray-600 mb-4 md:text-lg">
+                Your message has been sent successfully. We’ll get back to you
+                soon.
+              </p>
+              <button
+                onClick={closePopup}
+                className="bg-teal-700 text-white px-4 py-2 rounded-md hover:bg-teal-800 transition-colors"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
 };
 
 export default Form;
-
-// absolute bottom-0 left-0 right-0 bg-white/10 backdrop-blur-md border-t border-white/20 px-4 py-3
